@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
 import API from "../services/api";
 
 function ResumeCompare() {
@@ -25,7 +26,7 @@ function ResumeCompare() {
     const improvement = latest - first;
 
     return (
-        <div className="content">
+        <Layout>
             <h1>Resume Compare</h1>
 
             <div className="cards">
@@ -56,7 +57,7 @@ function ResumeCompare() {
                     </div>
                 ))}
             </div>
-        </div>
+        </Layout>
     );
 }
 

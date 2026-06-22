@@ -10,6 +10,9 @@ from app.routes.skill_gap import router as skill_gap_router
 from app.routes.roadmap import router as roadmap_router
 from app.routes.readiness import router as readiness_router
 from app.routes.analytics import router as analytics_router
+from app.routes.scorecard import router as scorecard_router
+from app.routes.resume_rewriter import router as resume_rewriter_router
+from app.routes.profile import router as profile_router
 
 from app.routes.history import router as history_router
 
@@ -49,3 +52,6 @@ app.include_router(roadmap_router)
 app.include_router(readiness_router)
 app.include_router(analytics_router)
 app.include_router(history_router)
+app.include_router(scorecard_router)
+app.include_router(resume_rewriter_router)
+app.include_router(profile_router)

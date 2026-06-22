@@ -1,4 +1,6 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
+import Layout from "../components/Layout";
 import API from "../services/api";
 
 function ResumeUpload() {
@@ -7,6 +9,11 @@ function ResumeUpload() {
 
     const uploadResume = async () => {
         try {
+            if (!file) {
+                toast.error("Please select a resume");
+                return;
+            }
+
             const formData = new FormData();
             formData.append("file", file);
 
@@ -19,15 +26,16 @@ function ResumeUpload() {
             });
 
             setResult(response.data);
+            toast.success("Resume analyzed successfully");
 
         } catch (error) {
             console.log(error);
-            alert("Resume Upload Failed");
+            toast.error("Resume Upload Failed");
         }
     };
 
     return (
-        <div className="content">
+        <Layout>
             <h1>Resume Intelligence</h1>
 
             <div className="card upload-card">
@@ -75,7 +83,6 @@ function ResumeUpload() {
 
                     <div className="card skills-card">
                         <h3>Interview Questions</h3>
-
                         {result.questions.map((q, index) => (
                             <div className="question-card" key={index}>
                                 <strong>Q{index + 1}.</strong> {q}
@@ -85,13 +92,11 @@ function ResumeUpload() {
 
                     <div className="card skills-card">
                         <h3>AI Resume Review</h3>
-                        <pre className="ai-review">
-                            {result.ai_review}
-                        </pre>
+                        <pre className="ai-review">{result.ai_review}</pre>
                     </div>
                 </>
             )}
-        </div>
+        </Layout>
     );
 }
 

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
+import Layout from "../components/Layout";
 import API from "../services/api";
 
 function Roadmap() {
@@ -12,9 +14,7 @@ function Roadmap() {
             const response = await API.post(
                 "/roadmap",
                 {
-                    missing_skills: skills
-                        .split(",")
-                        .map((s) => s.trim())
+                    missing_skills: skills.split(",").map((s) => s.trim())
                 },
                 {
                     headers: {
@@ -24,15 +24,16 @@ function Roadmap() {
             );
 
             setResult(response.data);
+            toast.success("Roadmap generated");
 
         } catch (error) {
             console.log(error);
-            alert("Roadmap Failed");
+            toast.error("Roadmap Failed");
         }
     };
 
     return (
-        <div className="content">
+        <Layout>
             <h1>Learning Roadmap</h1>
 
             <div className="card upload-card">
@@ -63,7 +64,7 @@ function Roadmap() {
                     ))}
                 </div>
             )}
-        </div>
+        </Layout>
     );
 }
 

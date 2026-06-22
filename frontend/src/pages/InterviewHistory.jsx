@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
 import API from "../services/api";
 
-function InterviewHistory() {
+function ResumeHistory() {
     const [records, setRecords] = useState([]);
 
     const fetchHistory = async () => {
         const token = localStorage.getItem("token");
 
-        const response = await API.get("/interview-history", {
+        const response = await API.get("/resume-history", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -21,19 +22,20 @@ function InterviewHistory() {
     }, []);
 
     return (
-        <div className="content">
-            <h1>Interview History</h1>
+        <Layout>
+            <h1>Resume History</h1>
 
             <div className="cards">
-                {records.map((item) => (
+                {records.map((item, index) => (
                     <div className="card" key={item.id}>
-                        <h3>Score: {item.score}/10</h3>
-                        <p className="skills-text">{item.feedback}</p>
+                        <h3>Resume Version {index + 1}</h3>
+                        <p>ATS Score: {item.ats_score}</p>
+                        <p className="skills-text">{item.skills}</p>
                     </div>
                 ))}
             </div>
-        </div>
+        </Layout>
     );
 }
 
-export default InterviewHistory;
+export default ResumeHistory;

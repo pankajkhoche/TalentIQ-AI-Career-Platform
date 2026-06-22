@@ -1,24 +1,72 @@
+import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
+import API from "../services/api";
+
 function ProfileCompletion() {
+
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+
+        const loadData = async () => {
+
+            const response =
+                await API.get("/profile-score");
+
+            setData(response.data);
+        };
+
+        loadData();
+
+    }, []);
+
     return (
-        <div className="content">
+        <Layout>
+
             <h1>Profile Completion</h1>
 
-            <div className="card">
-                <h3>Progress</h3>
+            {
+                data &&
 
-                <div className="completion-bar">
-                    <div className="completion-fill"></div>
-                </div>
+                <>
+                    <div className="readiness-card">
 
-                <h2>100%</h2>
+                        <div className="readiness-circle">
+                            {data.profile_score}%
+                        </div>
 
-                <p>✅ Resume Uploaded</p>
-                <p>✅ Skill Gap Completed</p>
-                <p>✅ Roadmap Generated</p>
-                <p>✅ Interview Practice Done</p>
-                <p>✅ Readiness Score Calculated</p>
-            </div>
-        </div>
+                        <h2>
+                            Profile Strength
+                        </h2>
+
+                    </div>
+
+                    <div
+                        className="card"
+                        style={{
+                            marginTop:"30px"
+                        }}
+                    >
+                        <h3>
+                            Missing Items
+                        </h3>
+
+                        {
+                            data.missing_items.map(
+                                (item,index)=>(
+                                    <p key={index}>
+                                        • {item}
+                                    </p>
+                                )
+                            )
+                        }
+
+                    </div>
+
+                </>
+            }
+
+        </Layout>
     );
 }
 

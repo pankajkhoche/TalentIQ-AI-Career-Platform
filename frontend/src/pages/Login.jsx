@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import API from "../services/api";
 
@@ -18,7 +18,6 @@ function Login() {
             });
 
             localStorage.setItem("token", response.data.access_token);
-
             toast.success("Login Successful");
 
             setTimeout(() => {
@@ -75,6 +74,13 @@ function Login() {
                 <button className="primary-btn" onClick={loginUser}>
                     Login
                 </button>
+
+                <p style={{ marginTop: "18px", color: "#cbd5e1" }}>
+                    New user?{" "}
+                    <Link to="/register" style={{ color: "#38bdf8" }}>
+                        Create account
+                    </Link>
+                </p>
             </div>
         </div>
     );

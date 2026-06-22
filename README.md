@@ -46,3 +46,11 @@ TalentIQ is a full-stack AI-powered career readiness platform built using FastAP
 
 ```bash
 py -3.14 -m uvicorn app.main:app --reload
+
+Screenshots
+Architecture Diagram
+Tech Stack
+Features
+Installation
+API Endpoints
+Future Scope

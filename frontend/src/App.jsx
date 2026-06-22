@@ -4,6 +4,7 @@ import "./App.css";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ResumeUpload from "./pages/ResumeUpload";
 import SkillGap from "./pages/SkillGap";
@@ -16,6 +17,7 @@ import ResumeHistory from "./pages/ResumeHistory";
 import InterviewHistory from "./pages/InterviewHistory";
 import ProfileCompletion from "./pages/ProfileCompletion";
 import ResumeCompare from "./pages/ResumeCompare";
+import ResumeRewriter from "./pages/ResumeRewriter";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
 
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/resume" element={<ProtectedRoute><ResumeUpload /></ProtectedRoute>} />
@@ -39,6 +42,7 @@ function App() {
                 <Route path="/interview-history" element={<ProtectedRoute><InterviewHistory /></ProtectedRoute>} />
                 <Route path="/profile-completion" element={<ProtectedRoute><ProfileCompletion /></ProtectedRoute>} />
                 <Route path="/resume-compare" element={<ProtectedRoute><ResumeCompare /></ProtectedRoute>} />
+                <Route path="/resume-rewriter" element={<ProtectedRoute><ResumeRewriter /></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     );

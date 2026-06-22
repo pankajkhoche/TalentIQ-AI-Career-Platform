@@ -23,3 +23,4 @@ numpy
 # Optional AI/LLM future use
 langchain
 langchain-openai
+reportlab

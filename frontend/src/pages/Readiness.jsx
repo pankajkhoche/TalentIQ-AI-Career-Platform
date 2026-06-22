@@ -1,4 +1,6 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
+import Layout from "../components/Layout";
 import API from "../services/api";
 
 function Readiness() {
@@ -26,15 +28,16 @@ function Readiness() {
             );
 
             setResult(response.data);
+            toast.success("Readiness calculated");
 
         } catch (error) {
             console.log(error);
-            alert("Readiness Failed");
+            toast.error("Readiness Failed");
         }
     };
 
     return (
-        <div className="content">
+        <Layout>
             <h1>Job Readiness</h1>
 
             <div className="card upload-card">
@@ -57,7 +60,7 @@ function Readiness() {
                     <p>Your current career readiness score based on ATS, interview, and skill gap.</p>
                 </div>
             )}
-        </div>
+        </Layout>
     );
 }
 
