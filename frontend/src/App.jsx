@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
 
-import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -17,8 +16,20 @@ import ResumeHistory from "./pages/ResumeHistory";
 import InterviewHistory from "./pages/InterviewHistory";
 import ProfileCompletion from "./pages/ProfileCompletion";
 import ResumeCompare from "./pages/ResumeCompare";
-import ResumeRewriter from "./pages/ResumeRewriter";
 import ProtectedRoute from "./components/ProtectedRoute";
+
+function Home() {
+    return (
+        <div className="login-page">
+            <div className="login-left">
+                <h1 className="brand-animated">TalentIQ</h1>
+                <h2>AI Career Intelligence Platform</h2>
+                <p>Resume analysis, ATS scoring, skill gap, roadmap and interview practice.</p>
+                <a className="primary-btn" href="/login">Go to Login</a>
+            </div>
+        </div>
+    );
+}
 
 function App() {
     return (
@@ -26,7 +37,7 @@ function App() {
             <Toaster position="top-right" />
 
             <Routes>
-                <Route path="/" element={<Landing />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
@@ -42,7 +53,6 @@ function App() {
                 <Route path="/interview-history" element={<ProtectedRoute><InterviewHistory /></ProtectedRoute>} />
                 <Route path="/profile-completion" element={<ProtectedRoute><ProfileCompletion /></ProtectedRoute>} />
                 <Route path="/resume-compare" element={<ProtectedRoute><ResumeCompare /></ProtectedRoute>} />
-                <Route path="/resume-rewriter" element={<ProtectedRoute><ResumeRewriter /></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     );
