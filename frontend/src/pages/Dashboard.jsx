@@ -110,6 +110,44 @@ function Dashboard() {
                             <AnalyticsChart />
                         </section>
 
+                        <div className="dashboard-grid">
+
+                           <div className="dashboard-widget">
+                               <h3>Career Readiness</h3>
+
+                               <div className="mini-progress">
+                                    <div
+                                        className="mini-progress-fill"
+                                        style={{
+                                            width: `${data.job_readiness}%`
+                                        }}
+                                    />
+                            </div>
+
+        <p>
+            {data.job_readiness}% Ready
+        </p>
+    </div>
+
+    <div className="dashboard-widget">
+        <h3>ATS Performance</h3>
+
+        <div className="mini-progress">
+            <div
+                className="mini-progress-fill ats-fill"
+                style={{
+                    width: `${data.ats_score}%`
+                }}
+            />
+        </div>
+
+        <p>
+            {data.ats_score}/100 ATS Score
+        </p>
+    </div>
+
+</div>
+
                         {/* SKILLS */}
 
                         <section
