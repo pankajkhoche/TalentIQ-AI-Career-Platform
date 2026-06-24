@@ -961,3 +961,41 @@ color:#cbd5e1;
 margin-bottom:30px;
 font-size:20px;
 }
+
+
+.dashboard-icon{
+font-size:32px;
+color:#38bdf8;
+margin-bottom:15px;
+}
+
+.hero-card h1{
+font-size:56px;
+margin-bottom:15px;
+}
+
+.hero-card p{
+font-size:18px;
+color:#cbd5e1;
+line-height:1.8;
+}
+
+.stat-card h1{
+font-size:48px;
+margin-top:10px;
+}
+
+.stat-card{
+min-height:180px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.readiness-card{
+margin:40px auto;
+}
+
+.roadmap-timeline{
+margin-top:50px;
+}

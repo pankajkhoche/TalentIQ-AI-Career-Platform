@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import AnalyticsChart from "../components/AnalyticsChart";
 import API from "../services/api";
+import {
+    FaChartLine,
+    FaRocket,
+    FaFileAlt,
+    FaUserTie,
+    FaBrain
+} from "react-icons/fa";
+
 import "../styles/Dashboard.css";
 
 function Dashboard() {
@@ -28,41 +36,134 @@ function Dashboard() {
             <Sidebar />
 
             <main className="dashboard-main">
-                <div className="hero-card">
-                    <h1>Welcome to TalentIQ</h1>
-                    <p>Your AI-powered career readiness command center.</p>
-                </div>
+
+                {/* HERO */}
+
+                <section className="hero-card">
+                    <h1>Career Intelligence Dashboard</h1>
+
+                    <p>
+                        Track your ATS performance, interview readiness,
+                        resume strength and skill growth in one place.
+                    </p>
+                </section>
 
                 {data && (
                     <>
-                        <div className="stats-grid">
-                            <div className="stat-card">
+
+                        {/* TOP STATS */}
+
+                        <section className="stats-grid">
+
+                            <div className="stat-card premium-card">
+                                <FaChartLine className="dashboard-icon" />
                                 <h3>ATS Score</h3>
                                 <h1>{data.ats_score}</h1>
                             </div>
 
-                            <div className="stat-card">
-                                <h3>Readiness</h3>
+                            <div className="stat-card premium-card">
+                                <FaRocket className="dashboard-icon" />
+                                <h3>Job Readiness</h3>
                                 <h1>{data.job_readiness}</h1>
                             </div>
 
-                            <div className="stat-card">
-                                <h3>Resumes</h3>
+                            <div className="stat-card premium-card">
+                                <FaFileAlt className="dashboard-icon" />
+                                <h3>Resumes Uploaded</h3>
                                 <h1>{data.resume_count}</h1>
                             </div>
 
-                            <div className="stat-card">
+                            <div className="stat-card premium-card">
+                                <FaUserTie className="dashboard-icon" />
                                 <h3>Interviews</h3>
                                 <h1>{data.interviews_completed}</h1>
                             </div>
-                        </div>
 
-                        <AnalyticsChart />
+                        </section>
 
-                        <div className="stat-card" style={{ marginTop: "30px" }}>
-                            <h3>Latest Skills</h3>
-                            <p>{data.skills}</p>
-                        </div>
+                        {/* READINESS */}
+
+                        <section className="readiness-card">
+
+                            <div className="readiness-circle">
+                                {data.job_readiness}
+                            </div>
+
+                            <h2>Career Readiness Score</h2>
+
+                            <p>
+                                This score reflects your overall
+                                preparedness for job opportunities.
+                            </p>
+
+                        </section>
+
+                        {/* ANALYTICS */}
+
+                        <section style={{ marginTop: "40px" }}>
+                            <AnalyticsChart />
+                        </section>
+
+                        {/* SKILLS */}
+
+                        <section
+                            className="stat-card"
+                            style={{ marginTop: "35px" }}
+                        >
+                            <FaBrain className="dashboard-icon" />
+
+                            <h3>Latest Extracted Skills</h3>
+
+                            <p className="skills-text">
+                                {data.skills}
+                            </p>
+                        </section>
+
+                        {/* ROADMAP */}
+
+                        <section className="roadmap-timeline">
+
+                            <div className="timeline-card">
+                                <div className="timeline-dot"></div>
+
+                                <div>
+                                    <h3>Improve ATS Score</h3>
+
+                                    <p>
+                                        Optimize keywords, formatting,
+                                        and role-specific skills.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="timeline-card">
+                                <div className="timeline-dot"></div>
+
+                                <div>
+                                    <h3>Close Skill Gaps</h3>
+
+                                    <p>
+                                        Focus on technologies identified
+                                        during analysis.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="timeline-card">
+                                <div className="timeline-dot"></div>
+
+                                <div>
+                                    <h3>Practice Interviews</h3>
+
+                                    <p>
+                                        Complete interview simulations
+                                        and improve answer quality.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </section>
+
                     </>
                 )}
             </main>
