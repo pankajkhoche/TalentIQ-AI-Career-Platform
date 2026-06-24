@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import API from "../services/api";
+import toast from "react-hot-toast";
+
 
 function Login() {
     const navigate = useNavigate();
@@ -22,7 +24,7 @@ function Login() {
 
             setTimeout(() => {
                 navigate("/dashboard");
-            }, 700);
+            }, 1000);
 
         } catch (error) {
             console.log(error);

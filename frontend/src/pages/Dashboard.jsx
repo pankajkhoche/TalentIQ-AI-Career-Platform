@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import AnalyticsChart from "../components/AnalyticsChart";
 import API from "../services/api";
+import { motion } from "framer-motion";
 import {
     FaChartLine,
     FaRocket,
@@ -35,7 +36,12 @@ function Dashboard() {
         <>
             <Sidebar />
 
-            <main className="dashboard-main">
+            <motion.main
+            className="dashboard-main"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            >
 
                 {/* HERO */}
 
@@ -166,7 +172,7 @@ function Dashboard() {
 
                     </>
                 )}
-            </main>
+            </motion.main>
         </>
     );
 }

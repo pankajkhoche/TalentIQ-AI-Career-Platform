@@ -2,10 +2,14 @@ import AnimatedLogo from "../components/AnimatedLogo";
 import HeroSection from "../components/HeroSection";
 import { FaRobot, FaFileAlt, FaChartLine, FaRoad, FaBriefcase, FaBullseye } from "react-icons/fa";
 import "../styles/Landing.css";
+import ParticlesBackground from "../components/ParticlesBackground";
+import CountUp from "react-countup";
 
 function Landing() {
   return (
     <div className="landing-page-premium">
+
+      <ParticlesBackground />
 
       <AnimatedLogo />
 
@@ -15,22 +19,22 @@ function Landing() {
 
       <section className="stats-section">
         <div className="stat-box">
-          <h2>500+</h2>
+          <h2><CountUp end={500} duration={3} />+</h2>
           <p>Resumes Analyzed</p>
         </div>
 
         <div className="stat-box">
-          <h2>95%</h2>
+          <h2><CountUp end={95} duration={3} />+</h2>
           <p>ATS Accuracy</p>
         </div>
 
         <div className="stat-box">
-          <h2>100+</h2>
+          <h2><CountUp end={100} duration={3} />+</h2>
           <p>Career Roadmaps</p>
         </div>
 
         <div className="stat-box">
-          <h2>1000+</h2>
+          <h2><CountUp end={1000} duration={3} />+</h2>
           <p>Interview Questions</p>
         </div>
       </section>

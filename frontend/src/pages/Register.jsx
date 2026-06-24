@@ -19,7 +19,7 @@ function Register() {
                 password
             });
 
-            toast.success("Registration Successful");
+            toast.success("Account Created Successfully");
 
             setTimeout(() => {
                 navigate("/login");

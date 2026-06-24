@@ -6,6 +6,7 @@ import API from "../services/api";
 function ResumeUpload() {
     const [file, setFile] = useState(null);
     const [result, setResult] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const uploadResume = async () => {
         try {
@@ -26,6 +27,7 @@ function ResumeUpload() {
             });
 
             setResult(response.data);
+            setLoading(false);
             toast.success("Resume analyzed successfully");
 
         } catch (error) {
@@ -46,8 +48,12 @@ function ResumeUpload() {
                     onChange={(e) => setFile(e.target.files[0])}
                 />
 
-                <button className="primary-btn" onClick={uploadResume}>
-                    Analyze Resume
+                <button
+                    className="primary-btn"
+                    onClick={uploadResume}
+                    disabled={loading}
+                >
+                    {loading ? "Analyzing Resume..." : "Upload Resume"}
                 </button>
             </div>
 
