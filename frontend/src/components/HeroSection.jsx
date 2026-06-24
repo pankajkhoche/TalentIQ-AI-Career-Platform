@@ -9,20 +9,23 @@ function HeroSection() {
             </div>
 
             <h1 className="hero-title">
-                Transform Your Career
+                Build a Job-Ready Career
                 <br />
                 With AI Intelligence
             </h1>
 
             <p className="hero-description">
-                Resume Analysis, ATS Optimization,
-                Interview Practice, Roadmap Generation,
-                Skill Gap Detection and Career Readiness.
+                Analyze your resume, improve ATS score, identify skill gaps,
+                generate personalized roadmaps and prepare for interviews.
             </p>
 
             <div className="hero-buttons">
                 <Link to="/login" className="primary-btn">
                     Get Started
+                </Link>
+
+                <Link to="/register" className="secondary-btn">
+                    Create Account
                 </Link>
             </div>
 
