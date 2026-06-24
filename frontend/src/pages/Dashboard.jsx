@@ -150,19 +150,42 @@ function Dashboard() {
 
                         {/* SKILLS */}
 
-                        <section
-                            className="stat-card"
-                            style={{ marginTop: "35px" }}
-                        >
-                            <FaBrain className="dashboard-icon" />
+    <div className="stats-grid">
 
-                            <h3>Latest Extracted Skills</h3>
+       <div className="stat-card premium-card">
+            <h3>ATS Score</h3>
+            <h1>{data.ats_score}</h1>
+            <span className="card-status success">
+                Resume Strength
+            </span>
+        </div>
 
-                            <p className="skills-text">
-                                {data.skills}
-                            </p>
-                        </section>
+        <div className="stat-card premium-card">
+            <h3>Job Readiness</h3>
+            <h1>{data.job_readiness}</h1>
+            <span className="card-status primary">
+                Career Ready
+            </span>
+        </div>
 
+        <div className="stat-card premium-card">
+            <h3>Resumes Uploaded</h3>
+            <h1>{data.resume_count}</h1>
+            <span className="card-status info">
+                Portfolio Growth
+            </span>
+        </div>
+
+        <div className="stat-card premium-card">
+            <h3>Interviews</h3>
+            <h1>{data.interviews_completed}</h1>
+            <span className="card-status warning">
+                Practice Progress
+            </span>
+        </div>
+  
+    </div>
+    
                         {/* ROADMAP */}
 
                         <section className="roadmap-timeline">
@@ -205,6 +228,28 @@ function Dashboard() {
                                     </p>
                                 </div>
                             </div>
+
+                            <section className="activity-section">
+
+                                <h2>Recent Activity</h2>
+
+                                <div className="activity-card">
+                                    Resume analyzed successfully
+                                </div>
+
+                                <div className="activity-card">
+                                    ATS score calculated
+                                </div>
+
+                                <div className="activity-card">
+                                    Roadmap generated
+                                </div>
+
+                                <div className="activity-card">
+                                    Readiness score evaluated
+                                 </div>
+
+                            </section>
 
                         </section>
 
