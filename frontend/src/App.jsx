@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
 
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -18,26 +19,31 @@ import ProfileCompletion from "./pages/ProfileCompletion";
 import ResumeCompare from "./pages/ResumeCompare";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-function Home() {
-    return (
-        <div className="login-page">
-            <div className="login-left">
-                <h1 className="brand-animated">TalentIQ</h1>
-                <h2>AI Career Intelligence Platform</h2>
-                <p>Resume analysis, ATS scoring, skill gap, roadmap and interview practice.</p>
-                <a className="primary-btn" href="/login">Go to Login</a>
-            </div>
-        </div>
-    );
-}
-
 function App() {
     return (
         <BrowserRouter>
-            <Toaster position="top-right" />
+            <Toaster
+                position="top-right"
+                toastOptions={{
+                    style: {
+                        background: "#1a2235",
+                        color: "#f1f5f9",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        borderRadius: "12px",
+                        fontSize: "14px",
+                        fontWeight: "500",
+                    },
+                    success: {
+                        iconTheme: { primary: "#4ade80", secondary: "#1a2235" },
+                    },
+                    error: {
+                        iconTheme: { primary: "#f87171", secondary: "#1a2235" },
+                    },
+                }}
+            />
 
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Landing />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
