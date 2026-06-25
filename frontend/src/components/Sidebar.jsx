@@ -1,47 +1,109 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
-    FaChartPie,
-    FaFileUpload,
-    FaRoute,
-    FaBrain,
-    FaBriefcase,
-    FaSignOutAlt,
-    FaHistory,
-    FaBalanceScale
+  FaTachometerAlt, FaFileAlt, FaChartBar, FaRoad,
+  FaBolt, FaRobot, FaBriefcase, FaHistory,
+  FaClipboardList, FaCopy, FaMagic, FaSignOutAlt,
+  FaBrain, FaUser
 } from "react-icons/fa";
 
-function Sidebar() {
-    const navigate = useNavigate();
+const navSections = [
+  {
+    title: "Overview",
+    links: [
+      { to: "/dashboard", icon: <FaTachometerAlt />, label: "Dashboard" },
+    ]
+  },
+  {
+    title: "Resume",
+    links: [
+      { to: "/resume",         icon: <FaFileAlt />,      label: "Upload Resume" },
+      { to: "/resume-history", icon: <FaHistory />,      label: "Resume History" },
+      { to: "/resume-compare", icon: <FaCopy />,         label: "Compare Resumes" },
+    ]
+  },
+  {
+    title: "Career Intel",
+    links: [
+      { to: "/skill-gap",    icon: <FaChartBar />,       label: "Skill Gap" },
+      { to: "/roadmap",      icon: <FaRoad />,           label: "Roadmap" },
+      { to: "/readiness",    icon: <FaBolt />,           label: "Job Readiness" },
+      { to: "/career-advisor",icon: <FaBrain />,         label: "Career Advisor" },
+    ]
+  },
+  {
+    title: "Interview",
+    links: [
+      { to: "/interview-practice", icon: <FaRobot />,        label: "Mock Interview" },
+      { to: "/interview-history",  icon: <FaClipboardList />, label: "Interview History" },
+    ]
+  },
+  {
+    title: "Tools",
+    links: [
+      { to: "/job-matcher",        icon: <FaBriefcase />,  label: "Job Matcher" },
+      { to: "/profile-completion", icon: <FaUser />,       label: "Profile" },
+    ]
+  },
+];
 
-    const logout = () => {
-        localStorage.removeItem("token");
-        navigate("/login");
-    };
+export default function Sidebar() {
+  const navigate = useNavigate();
 
-    return (
-        <aside className="premium-sidebar">
-            <h2 className="sidebar-logo">TalentIQ</h2>
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
-            <p className="sidebar-section-title">Main</p>
-            <Link to="/dashboard"><FaChartPie /> Dashboard</Link>
-            <Link to="/resume"><FaFileUpload /> Resume Upload</Link>
+  return (
+    <motion.aside
+      className="premium-sidebar"
+      initial={{ x: -280 }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}>
 
-            <p className="sidebar-section-title">Career Tools</p>
-            <Link to="/skill-gap"><FaBrain /> Skill Gap</Link>
-            <Link to="/roadmap"><FaRoute /> Roadmap</Link>
-            <Link to="/readiness"><FaBriefcase /> Readiness</Link>
-            <Link to="/interview-practice"><FaBriefcase /> Interview</Link>
+      {/* LOGO */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "4px 10px", marginBottom: 32 }}>
+        <div style={{
+          width: 36, height: 36, borderRadius: 10,
+          background: "linear-gradient(135deg, #7c3aed, #38bdf8)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          flexShrink: 0,
+        }}>
+          <FaBrain color="#fff" size={16} />
+        </div>
+        <span className="sidebar-logo" style={{ margin: 0, fontSize: 20 }}>TalentIQ</span>
+      </div>
 
-            <p className="sidebar-section-title">Records</p>
-            <Link to="/resume-history"><FaHistory /> Resume History</Link>
-            <Link to="/interview-history"><FaHistory /> Interview History</Link>
-            <Link to="/resume-compare"><FaBalanceScale /> Resume Compare</Link>
+      {/* NAV */}
+      <nav style={{ flex: 1 }}>
+        {navSections.map((section, si) => (
+          <div key={si}>
+            <div className="sidebar-section-title">{section.title}</div>
+            {section.links.map((link, li) => (
+              <NavLink
+                key={li}
+                to={link.to}
+                className={({ isActive }) => isActive ? "active" : ""}
+                style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <span style={{ fontSize: 14, opacity: 0.8 }}>{link.icon}</span>
+                <span style={{ fontSize: 14 }}>{link.label}</span>
+              </NavLink>
+            ))}
+          </div>
+        ))}
+      </nav>
 
-            <button className="primary-btn logout-btn" onClick={logout}>
-                <FaSignOutAlt /> Logout
-            </button>
-        </aside>
-    );
+      {/* LOGOUT */}
+      <motion.button
+        className="logout-btn"
+        onClick={logout}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.97 }}
+        style={{ marginTop: 24 }}>
+        <FaSignOutAlt size={14} />
+        Sign Out
+      </motion.button>
+    </motion.aside>
+  );
 }
-
-export default Sidebar;
